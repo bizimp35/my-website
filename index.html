@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бизнес Импульс</title>
+<style>
+/* Базовые стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body { 
+  font-family: Arial, sans-serif; 
+  background:#e6ecf3; 
+  color:#333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Панель навигации */
+.navbar {
+  background: #001f4d;
+  padding: 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  min-height: 80px;
+  overflow: visible;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: 80px;
+  position: relative;
+}
+
+/* Логотип */
+.nav-logo {
+  width: 200px;
+  height: 60px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.95);
+  padding: 5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  transition: all 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.nav-logo img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.2) contrast(1.2);
+}
+
+/* Меню */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+  z-index: 3;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  background: linear-gradient(135deg, rgba(0,31,77,0.9) 0%, rgba(0,51,102,0.9) 100%);
+  border-radius: 25px;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: linear-gradient(135deg, rgba(77, 171, 247, 0.9) 0%, rgba(0, 123, 255, 0.9) 100%);
+  transform: translateY(-2px);
+}
+
+/* Бургер-меню */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  z-index: 4;
+  background: rgba(0,31,77,0.9);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Секции */
+section { 
+  padding: 40px 15px; 
+  max-width: 1200px; 
+  margin: 0 auto;
+  width: 100%;
+}
+
+h2 { 
+  color:#001f4d; 
+  margin-bottom: 30px; 
+  font-size: 1.8em; 
+  text-align: center;
+}
+
+/* Стили для трех карточек "О нас" */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.about-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  height: auto;
+  min-height: 420px;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.about-card.center {
+  border-color: #001f4d;
+  box-shadow: 0 8px 25px rgba(0,31,77,0.2);
+}
+
+.card-top {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card-top img {
+  width: 240px;
+  height: 300px;
+  border-radius: 10%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 3px solid #001f4d;
+  background: #f0f0f0;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #001f4d;
+  margin: 0 0 8px 0;
+}
+
+.card-desc {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.about-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-card li {
+  margin-bottom: 12px;
+  padding: 10px 0;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.5;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.about-card li:last-child {
+  border-bottom: none;
+}
+
+.about-card li:before {
+  color: #001f4d;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Карточки услуг - ОСНОВНЫЕ ИЗМЕНЕНИЯ */
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 карточки в ряд по умолчанию */
+  gap: 25px;
+  padding: 0 15px;
+}
+
+.card { 
+  background: #fff; 
+  padding: 25px; 
+  border-radius: 10px; 
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 250px;
+}
+
+.card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+}
+
+.card h3 { 
+  margin-top: 0; 
+  color: #001f4d; 
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.card p { 
+  margin: 5px 0; 
+  flex-grow: 1;
+  color: #555;
+  line-height: 1.5;
+}
+
+.price {
+  font-weight: bold;
+  color: #001f4d;
+  margin: 15px 0;
+  font-size: 1.1em;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: auto;
+  padding: 12px 20px;
+  background: #001f4d;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  border: 0;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background 0.3s;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.btn:hover {
+  background: #003366;
+  transform: translateY(-2px);
+}
+
+/* Форма обратной связи */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+form input, form textarea {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  width: 100%;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #001f4d;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0,31,77,0.3);
+}
+
+form button {
+  background: #001f4d;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s;
+  width: 100%;
+}
+
+form button:hover {
+  background: #003366;
+}
+
+/* Подвал */
+footer {
+  background: #001f4d;
+  color: #fff;
+  text-align: center;
+  padding: 30px 15px;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Кнопка наверх */
+#topBtn { 
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px; 
+  background: #001f4d; 
+  color: #fff; 
+  border: none; 
+  padding: 12px; 
+  border-radius: 50%; 
+  cursor: pointer; 
+  font-size: 18px; 
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
+  transition: 0.3s; 
+  z-index: 999;
+}
+
+#topBtn:hover { 
+  background: #003366; 
+}
+
+.whatsapp { 
+  position: fixed; 
+  bottom: 20px; 
+  left: 20px; 
+  background: #25b0d3; 
+  color: #fff; 
+  padding: 12px; 
+  border-radius: 50%; 
+  font-size: 22px; 
+  text-decoration: none; 
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
+  transition: 0.3s; 
+  z-index: 999;
+}
+
+.whatsapp:hover { 
+  background: #128c7e; 
+}
+
+/* Модальные окна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(2,6,23,0.18);
+  max-height: 85vh;
+  overflow: auto;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #001f4d;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: #222;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.modal-content ul {
+  margin: 8px 0 12px 20px;
+  color: #333;
+}
+
+.modal-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,31,77,0.08);
+  background: transparent;
+  color: #001f4d;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Новости */
+#news_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: auto;
+  min-height: 70px;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.news-card p {
+  margin: 0 0 10px ;
+}
+
+.news-card a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2B587A;
+  margin-top: auto;
+}
+
+.news-card a:hover {
+  color: #001f4d;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 10px 20px;
+  }
+  
+  .nav-logo {
+    width: 180px;
+    height: 50px;
+  }
+  
+  .about-cards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* На планшетах 2 карточки в ряд */
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 70px;
+  }
+  
+  .nav-container {
+    padding: 8px 15px;
+    height: 70px;
+  }
+  
+  .nav-logo {
+    width: 150px;
+    height: 45px;
+    position: static;
+    transform: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background: linear-gradient(135deg, #001f4d 0%, #003366 100%);
+    width: 100%;
+    text-align: center;
+    transition: 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    padding: 20px 0;
+    gap: 0;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-link {
+    padding: 15px;
+    display: block;
+    margin: 0 15px 8px 15px;
+    border-radius: 8px;
+    background: transparent;
+  }
+  
+  .nav-link:hover {
+    background: rgba(77, 171, 247, 0.9);
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  
+  section {
+    padding: 30px 10px;
+  }
+  
+  h2 {
+    font-size: 1.6em;
+  }
+  
+  .about-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .about-card {
+    min-height: auto;
+  }
+
+  /* На мобильных 1 карточка в ряд */
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .card {
+    padding: 20px;
+    min-height: 220px;
+  }
+
+  .card h3 {
+    min-height: auto;
+    font-size: 1.1em;
+  }
+  
+  #news_cards {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    min-height: 60px;
+  }
+  
+  .nav-container {
+    padding: 5px 10px;
+    height: 60px;
+  }
+  
+  .nav-logo {
+    width: 130px;
+    height: 35px;
+  }
+  
+  .nav-menu {
+    top: 60px;
+  }
+  
+  section {
+    padding: 20px 5px;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+  }
+  
+  .about-card {
+    padding: 15px;
+  }
+  
+  .card-top img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .name {
+    font-size: 20px;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 5px;
+  }
+
+  .card {
+    padding: 15px;
+    min-height: 200px;
+  }
+  
+  form {
+    padding: 15px;
+  }
+  
+  #topBtn, .whatsapp {
+    bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .whatsapp {
+    left: 15px;
+  }
+}
+
+/* Для очень широких экранов */
+@media (min-width: 1400px) {
+  .services-container {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1300px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Шапка сайта -->
+<header>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="https://sun9-49.userapi.com/s/v1/if2/iojfyuf2nMH0Yfyk1SwJ_KL_sS5PFLxnxhU2r7UDmYVT7-br1x-5sHo5ttA8zOuO0HinDCa--IMVzMQLAE3rUoD4.jpg?quality=95&as=32x10,48x15,72x22,108x33,160x49,240x74,360x111,480x148,540x167,640x198,720x223,1080x334,1280x396,1440x445,1566x484&from=bu&cs=1566x0" alt="Бизнес Импульс">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#about" class="nav-link">О нас</a></li>
+        <li><a href="#services" class="nav-link">Услуги</a></li>
+        <li><a href="#contacts" class="nav-link">Контакты</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Секция "О нас" с тремя карточками -->
+<section id="about">
+  <div class="about-cards">
+    <!-- Анна -->
+    <div class="about-card">
+      <div class="card-top">
+        <h3 class="name">Щербакова Анна</h3>
+        <p class="card-desc">Кандидат экономических наук с техническим образованием, опыт в привлечении государственных инвестиций.</p>
+        <img src="https://sun9-49.userapi.com/s/v1/ig2/HpfunVQT4W6zGQBZR6zlkoazWEy3546ZN786bwKNHoWoJXft2-5EIsd5pwnu3uUeo79AnhuX8bvlatliyFzepbxv.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,768x1024&from=bu&cs=768x0" alt="Анна">
+      </div>
+      <a href="files/Анна.pdf" class="btn btn-outline-primary" target="_blank">
+      Подробнее...
+    </a>
+    </div>
+
+    <!-- Марина -->
+    <div class="about-card">
+      <div class="card-top">
+        <h3 class="name">Акиндинова Марина</h3>
+        <p class="card-desc">Практикующий топ-менеджер с опытом работы более 20 лет в реальном секторе экономики.</p>
+        <img src="https://psv4.userapi.com/s/v1/d2/iI0D3jf5kWcOL0PKLbbNC7JI9MJUrmSiamPHqoCX1Wl_YZuCKP_pUanWZ0j4g5ZZ7QrkWRZXwT-epY1wvKbOZFwk2TIA6L2Lh6NL5M4nHckwi75FVBMXzb7qJrfyBnOZe-UvqbW3V_pC/5467533955705208600.jpg" alt="Марина">
+      </div>
+      <a href="files/Марина.pdf" class="btn btn-outline-primary" target="_blank">
+      Подробнее...
+    </a>
+    </div>
+  </div>
+</section>
+
+<!-- Секция услуг -->
+<section id="services">
+  <h2>Наши услуги</h2>
+  <div class="services-container">
+      <!-- 1 -->
+    <div class="card">
+      <h3>Тренинг «Бизнес-модель для социального бизнеса»</h3>
+      <p>Компетенции по бизнес-моделированию в социальном предпринимательстве.</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m1')">Подробнее…</button>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <h3>Тренинг «Построение бизнес-процессов»</h3>
+      <p>Навыки проектирования, документации и KPI бизнес-процессов.</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m2')">Подробнее…</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <h3>Тренинг «Бизнес-план: структура и лайфхаки»</h3>
+      <p>Как написать понятный инвестору бизнес-план по стандарту UNIDO.</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m3')">Подробнее…</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <h3>Тренинг «Scrum: основы гибкого управления»</h3>
+      <p>Гибкое управление проектами: роли, спринты, ретроспективы.</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m4')">Подробнее…</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <h3>Тренинг «Бизнес-модель: взгляд в будущее»</h3>
+      <p>Канвы Остервальдера, бережливая бизнес-модель — практики.</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m5')">Подробнее…</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <h3>Тренинг «Юнит-экономика: базовый курс»</h3>
+      <p>Ключевые метрики юнит-экономики, расчет и анализ продукта.</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m6')">Подробнее…</button>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <h3>Тренинг «QFD-анализ и Дом качества»</h3>
+      <p>Перевод потребностей клиентов в технические требования (QFD).</p>
+      <p class="price">Стоимость: 10 000 ₽</p>
+      <button class="btn" onclick="openModal('m7')">Подробнее…</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <h3>Постановка системы аналитики</h3>
+      <p>Сбор показателей, Excel-аналитика доходов и расходов.</p>
+      <p class="price">Стоимость: 60 000 ₽</p>
+      <button class="btn" onclick="openModal('m8')">Подробнее…</button>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <h3>Постановка системы бюджетирования</h3>
+      <p>Формирование бюджетов предприятия и контроль распределения средств.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m9')">Подробнее…</button>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+      <h3>Разработка финансовой модели</h3>
+      <p>Модель доходов/расходов, NPV/IRR, сценарный анализ.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m10')">Подробнее…</button>
+    </div>
+
+    <!-- 11 -->
+    <div class="card">
+      <h3>Разработка бизнес-плана</h3>
+      <p>Бизнес-план по требованиям банка/инвестора/UNIDO/ФРП.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m11')">Подробнее…</button>
+    </div>
+
+    <!-- 12 -->
+    <div class="card">
+      <h3>Постановка задач по автоматизации в 1С</h3>
+      <p>Сбор требований, подготовка ТЗ, согласование с разработчиками.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m12')">Подробнее…</button>
+    </div>
+
+    <!-- 13 -->
+    <div class="card">
+      <h3>Заявка БИЗНЕС-СТАРТ / Коммерциализация</h3>
+      <p>Заполнение форм фонда, бизнес-план, финмодель, письма поддержки.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m13')">Подробнее…</button>
+    </div>
+
+    <!-- 14 -->
+    <div class="card">
+      <h3>Заявка СТАРТ-1</h3>
+      <p>Подготовка презентации, заполнение форм, консультации по подаче.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m14')">Подробнее…</button>
+    </div>
+
+    <!-- 15 -->
+    <div class="card">
+      <h3>Заявка СТАРТ-2 / РАЗВИТИЕ</h3>
+      <p>Разработка бизнес-плана, финмодели, подготовка писем поддержки.</p>
+      <p class="price">Цена: по договорённости</p>
+      <button class="btn" onclick="openModal('m15')">Подробнее…</button>
+    </div>
+  </div> <!-- /container -->
+</section>
+
+<!-- Форма обратной связи -->
+<section id="feedback">
+  <h2>Связаться с нами</h2>
+  <form id="contactForm">
+    <input type="text" placeholder="Ваше имя" required>
+    <input type="email" placeholder="Ваш Email" required>
+    <textarea rows="5" placeholder="Ваше сообщение" required></textarea>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
+
+<!-- Новости -->
+<section id="news-section">
+  <h2>Наши новости</h2>
+  <div id="news_cards"></div>
+</section>
+
+<!-- Подвал -->
+<footer id="contacts">
+  <div class="footer-content">
+    <h3>Контакты</h3>
+    <p><strong>Телефон:</strong> +7 (921) 054-76-09</p>
+    <p><strong>VK чат:</strong> <a href="https://vk.com/busimpulse" target="_blank" style="color:#f0f0f0; text-decoration:underline;">Перейти в чат</a></p>
+    <p style="margin-top:20px;">© 2025 Бизнес Импульс. Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- Кнопки -->
+<button id="topBtn" onclick="topFunction()">↑</button>
+
+
+<!-- Модальные окна -->
+<div id="m1" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('m1')">&times;</button>
+    <h3>Тренинг «Бизнес-модель для социального бизнеса»</h3>
+    <p><b>Цель:</b> сформировать компетенции по бизнес-моделированию в социальном предпринимательстве.</p>
+    <p><b>Содержание:</b></p>
+    <ul>
+      <li>Социальное предпринимательство в России: требования законодательства.</li>
+      <li>Изучение ключевых элементов успешной бизнес-модели.</li>
+      <li>Разбор двух вариантов канвы бизнес-модели для социального бизнеса.</li>
+      <li>Практическая отработка навыков по построению бизнес-модели.</li>
+    </ul>
+    <p><b>Стоимость:</b> 10 000 ₽ <b>Продолжительность:</b> 120 минут</p>
+  </div>
+</div>
+
+<div id="m2" class="modal">
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m2')">&times;</button>
+    <h3>Тренинг «Построение бизнес-процессов»</h3>
+    <p><b>Цель:</b> расширить компетенции по построению бизнес-процессов и показателей эффективности.</p>
+    <p><b>Содержание:</b></p>
+    <ul>
+      <li>Бизнес-процесс: сущность, виды и отличительные особенности.</li>
+      <li>Этапы построения: постановка цели, границы, участники, документация.</li>
+      <li>Показатели эффективности бизнес-процессов и их обоснование.</li>
+      <li>Отработка навыков по построению бизнес-процесса.</li>
+    </ul>
+    <p><b>Стоимость:</b> 10 000 ₽. <b>Продолжительность:</b> 120 минут.</p>
+  </div>
+</div>
+
+<div id="m3" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m3')">&times;</button>
+    <h3>Тренинг «Бизнес-план: структура и лайфхаки»</h3>
+    <p><b>Цель:</b> расширить компетенции по разработке убедительного бизнеса-плана.</p>
+    <p><b>Содержание (кратко):</b></p>
+    <ul>
+      <li>Условия необходимости и стандарты бизнес-планирования.</li>
+      <li>Учет интересов инвестора, структура по UNIDO.</li>
+      <li>Лайфхаки для написания убедительного бизнес-плана.</li>
+    </ul>
+    <p><b>Стоимость:</b> 10 000 ₽.</p>
+    <p><b>Формат:</b> очный / дистанционный.</p>
+  </div>
+</div>
+
+<div id="m4" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('m4')">&times;</button>
+    <h3>Тренинг «Scrum: основы гибкого управления»</h3>
+    <p><b>Цель:</b> сформировать компетенции по гибкому управлению проектами по методологии Scrum.</p>
+    <p><b>Содержание (кратко):</b></p>
+    <ul>
+      <li>Основы методологии Scrum, ключевые роли.</li>
+      <li>Планирование спринтов, бэклог продукта, ретроспективы.</li>
+      <li>Практическая отработка навыков и техники.</li>
+      <li>Техники проведения ежедневных встреч, спринт-ревью и ретроспектив.</li>
+      <li>Обсуждение результатов работы. Ответы на вопросы участников.</li>
+    </ul>
+    <p><b>Для кого:</b> менеджеры проектов и команд, разработчики и дизайнеры, бизнес-аналитики.</p>
+    <p><b>Продолжительность:</b> 120 минут. <b>Количество участников:</b> до 10 чел.</p>
+    <p><b>Стоимость:</b> 10 000 ₽.</p>
+    <p><b>Формат:</b> очный, дистанционный.</p>
+  </div>
+</div>
+
+<div id="m5" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m5')">&times;</button>
+    <h3>Тренинг «Бизнес-модель: взгляд в будущее»</h3>
+    <p><b>Цель:</b> сформировать компетенции по бизнес-моделированию</p>
+    <p><b>Содержание (кратко):</b></p>
+    <ul>
+      <li>Изучение ключевых элементов успешной бизнес-модели.</li>
+      <li>Разбор канвы бизнес-модели А. Остервальдера и И. Пинье.</li>
+      <li>Разбор канвы бережливой бизнес-модели Э. Маурьи.</li>
+      <li>Практическая отработка навыков по построению бизнес-модели.</li>
+      <li>Обсуждение результатов работы. Ответы на вопросы участников.</li>
+    </ul>
+    <p><b>Для кого:</b> менеджеры по продукту и проекту, маркетологи и аналитики, начинающие предприниматели.</p>
+    <p><b>Продолжительность:</b> 120 минут. <b>Количество участников:</b> до 10 чел.</p>
+    <p><b>Стоимость:</b> 10 000 ₽.</p>
+    <p><b>Формат:</b> очный, дистанционный.</p>
+  </div>
+</div>
+
+<div id="m6" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m6')">&times;</button>
+    <h3>Тренинг «Юнит-экономика: базовый курс»</h3>
+    <p><b>Цель:</b> сформировать компетенции по определению ключевых метрик юнит-экономики для транзакционной и клиенткой моделей.</p>
+    <p><b>Содержание (кратко):</b></p>
+    <ul>
+      <li>Изучение концепции юнит-экономики и ее роли в анализе эффективности продукта.</li>
+      <li>Ключевые метрики, бюджетирование, ценообразование и подходы в продуктовой аналитике.</li>
+      <li>Практическая отработка навыков по расчету юнита для транзакционной и клиентской моделей.</li>
+      <li>Обсуждение результатов работы. Ответы на вопросы участников.</li>
+    </ul>
+    <p><b>Для кого:</b> менеджеры по продукту и проекту, маркетологи и аналитики, начинающие предприниматели.</p>
+    <p><b>Продолжительность:</b> 120 минут. <b>Количество участников:</b> до 10 чел.</p>
+    <p><b>Стоимость:</b> 10 000 ₽.</p>
+    <p><b>Формат:</b> очный, дистанционный.</p>
+  </div>
+</div>
+
+<div id="m7" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m7')">&times;</button>
+    <h3>Тренинг «QFD-анализ и Дом качества»</h3>
+    <p><b>Цель:</b> расширить компетенции по применению методов расчета маржинальности и точки безубыточности, управления затратами для повышения рентабельности бизнеса.</p>
+    <p><b>Содержание (кратко):</b></p>
+    <ul>
+      <li>Основные понятия маржинальной прибыли и ее влияние на финансовые результаты.</li>
+      <li>Как рассчитывать маржинальность и использовать ее для принятия управленческих решений?</li>
+      <li>Связь между точкой безубыточности и маржинальной прибылью.</li>
+      <li>Отработка практических навыков по расчету маржинальности, наценки и точки безубыточности.</li>
+      <li>Обсуждение результатов работы. Ответы на вопросы участников.</li>
+    </ul>
+    <p><b>Для кого:</b> специалисты, занимающиеся стратегическим планированием, бухгалтеры и аналитики, работающие с финансовыми показателями и отчетностью, руководители и менеджеры, заинтересованные в повышении прибыльности организации;</p>
+    <p><b>Продолжительность:</b> 120 минут. <b>Количество участников:</b> до 10 чел.</p>
+    <p><b>Стоимость:</b> 10 000 ₽.</p>
+    <p><b>Формат:</b> очный, дистанционный.</p>
+  </div>
+</div>
+
+<div id="m8" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('m8')">&times;</button>
+    <h3>Постановка упарвленческого учета</h3>
+    <p><b>Цель:</b> сформировать систему аналитики для обеспечения процесса управления объективной и значимой информацией, позволяющей оперативно принимать эффективные решения.</p>
+    <p><b>Содержание:</b></p>
+    <ul>
+      <li>Сбор информации клиента о целях проекта, необходимых показателях в части доходов и расходов бизнеса, или отдельных его направлений в рамках предлагаемого резюме проекта.</li>
+      <li>Подготовка системы аналитики доходов и расходов исходя из целей заказчика.</li>
+      <li>Согласование с заказчиком совокупности показателей в формате Excel.</li>
+      <li>Обсуждение результатов работы.</li>
+    </ul>
+    <p><b>Стоимость:</b> 60 000 ₽.</p>
+  </div>
+</div>
+
+<div id="m9" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m9')">&times;</button>
+    <h3>Постановка системы бюджетирования</h3>
+    <p><b>Цель:</b>  сформировать систему бюджетов предприятия для грамотного распределения ресурсов и их источников, а также повышения эффективности бизнеса.</p>
+    <p><b>Содержание работ:</b></p>
+    <ul>
+     <li>Сбор информации клиента о целях проекта, необходимых показателях в части доходов и расходов бизнеса, или отдельных его направлений в рамках предлагаемого резюме проекта.</li>
+      <li>Подготовка системы аналитики доходов и расходов исходя из целей заказчика.</li>
+      <li>Согласование с заказчиком совокупности показателей в формате Excel.</li>
+      <li>Обсуждение результатов работы.</li>
+    </ul>
+    <p><b>Стоимость:</b> по договорённости (бриф в сообщения группы)</p>
+  </div>
+</div>
+
+<div id="m10" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m10')">&times;</button>
+    <h3>Разработка финансовой модели</h3>
+    <p>Финансовая модель бизнес-проекта – инструмент, который помогает оценить финансовую жизнеспособность и прогнозировать результаты бизнеса.
+       Варианты разработки финансовой модели:
+       <li>только по бизнес-проекту;</li>
+       <li>по бизнес-проекту с учетом текущей деятельности организации.</li>
+       Структура финансовой модели бизнес-проекта:
+       <li>Доходы: оценка источников дохода, прогнозирование объемов продаж и цен.</li>
+       <li>Расходы: постоянные расходы, переменные расходы, оценка затрат на запуск и операционные расходы.</li>
+       <li>Капитальные вложения: инвестиции в оборудование, технологии и инфраструктуру.</li>
+       <li>Кэш-флоу: прогнозирование денежных потоков, оценка ликвидности и способности покрывать краткосрочные обязательства.</li>
+       <li>Финансовые показатели: расчет ключевых показателей, таких как рентабельность, срок окупаемости, чистая приведенная стоимость (NPV) и внутренняя норма доходности (IRR).</li>
+       Сценарный анализ: оценка различных сценариев (оптимистичный, пессимистичный и базовый) для понимания рисков и возможнос</p>
+    <p><b>Стоимость:</b> по договорённости (бриф в сообщения группы)</p>
+  </div>
+</div>
+
+<div id="m11" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m11')">&times;</button>
+    <h3>Разработка бизнес-плана</h3>
+    Варианты  разрабатываемых бизнес-планов:
+       <li>бизнес-план для банка;</li>
+       <li>бизнес-план для внутреннего планирования;</li>
+       <li>бизнес-план для инвестора;</li>
+       <li>бизнес-план для господдержки;</li>
+       <li>бизнес-план для Фонда развития промышленности;</li>
+       <li>бизнес-план для стартапа;</li>
+       <li>бизнес-план для начинающих предпринимателей;</li>
+       <li>технико-экономическое обоснование.</li>
+      <p>Бизнес-план разрабатываем по требованиям государственного или частного инвестора. Если требований нет, то разработка идет по стандарту UNIDO.
+      Для определения сроков и стоимости работ заполните бриф на разработку бизнес-плана, который находится ниже в комментариях, и направьте в сообщения группы.</p>
+      Структура бизнес-плана по стандарту UNIDO:
+      <li>Резюме.</li>
+      <li>Описание предприятия и отрасли.</li>
+      <li>Описание продукции.</li>
+      <li>Маркетинг и сбыт продукции.;</li>
+      <li>Производственный план.;</li>
+      <li>Организационный план.</li>
+      <li>Финансовый план.</li>
+      <li>Направленность и эффективность проекта.</li>
+      <li>Риски и гарантии.</li>
+    <p><b>Стоимость:</b> по договорённости </p>
+  </div>
+</div>
+
+<div id="m12" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m12')">&times;</button>
+    <h3>Постановка задач по автоматизации в 1С</h3>
+    <p><b>Цель:</b> сформировать техническое задание по автоматизации определенного процесса, блоков бухгалтерского или финансового учета.</p>
+    <p><b>Содержание работ:</b></p>
+    <ul>
+      <li>Сбор информации клиента о целях проекта автоматизации и желаемых результатах при завершении процесса автоматизации, необходимости отчетных форм по результату и их содержанию, конкретизация элементов аналитики или субконто в рамках предлагаемого резюме проекта.</li>
+      <li>Подготовка технического задания для программистов.</li>
+      <li>Согласование с заказчиком и разработчиком технического задания по проекту.</li>
+      <li>Консультирование заказчика в ходе процесса автоматизации.</li>
+      <li>Обсуждение результатов работы.</li>
+    </ul>
+      Для определения сроков и стоимости работ направим Вам бриф по Вашему запросу в сообщения группы.
+    <p><b>Стоимость:</b> по договорённости </p>
+  </div>
+</div>
+
+<div id="m13" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m13')">&times;</button>
+    <h3>Заявка БИЗНЕС-СТАРТ / Коммерциализация</h3>
+    Выполняемые работы:
+       <li>Заполнение электронных форм в системе Фонда.</li>
+       <li>Разработка бизнес-плана проекта.</li>
+       <li>Разработка финансовой модели.</li>
+       <li>Помощь в подготовке шаблонов писем поддержки.</li>
+       <li>Консультации по вопросам, связанным с подачей заявки.</li>
+      <p>Идеи проектов не генерируем! Даём рекомендации по улучшению концепции.
+Гарантия прохождения формальной экспертизы (при соблюдении всех формальных требований заказчиком).</p>
+      Данные, которые предоставляет заказчик
+      <li>Описание проекта с научной новизной, прописанной по пунктам.</li>
+      <li>Резюме по направленной форме для каждого члена команды.</li>
+      <li>Подтверждающие документы (письма поддержки, грамоты/дипломы, документы по заявителю из ФНС, документы, подтверждающие возможность сбыта и др.).</li>
+    <p><b>Стоимость:</b> по договорённости </p>
+  </div>
+</div>
+
+<div id="m14" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m14')">&times;</button>
+    <h3>Заявка СТАРТ-1</h3>
+    Выполняемые работы:
+       <li>Заполнение электронных форм в системе Фонда.</li>
+       <li>Разработка бизнес-плана проекта.</li>
+       <li>Разработка финансовой модели.</li>
+       <li>Помощь в подготовке шаблонов писем поддержки.</li>
+       <li>Консультации по вопросам, связанным с подачей заявки.</li>
+      <p>Идеи проектов не генерируем! Даём рекомендации по улучшению концепции.
+Гарантия прохождения формальной экспертизы (при соблюдении всех формальных требований заказчиком).</p>
+      Данные, которые предоставляет заказчик
+      <li>Описание проекта с научной новизной, прописанной по пунктам.</li>
+      <li>Резюме по направленной форме для каждого члена команды.</li>
+      <li>Подтверждающие документы (письма поддержки, грамоты/дипломы, документы по заявителю из ФНС, документы, подтверждающие возможность сбыта и др.).</li>
+    <p><b>Стоимость:</b> по договорённости </p>
+  </div>
+</div>
+
+<div id="m15" class="modal" >
+  <div class="modal-content">
+    <button class="modal-close"  onclick="closeModal('m15')">&times;</button>
+    <h3>Заявка СТАРТ-2 / РАЗВИТИЕ</h3>
+    Выполняемые работы:
+       <li>Заполнение электронных форм в системе Фонда.</li>
+       <li>Разработка бизнес-плана проекта.</li>
+       <li>Разработка финансовой модели.</li>
+       <li>Помощь в подготовке шаблонов писем поддержки.</li>
+       <li>Консультации по вопросам, связанным с подачей заявки.</li>
+      <p>Идеи проектов не генерируем! Даём рекомендации по улучшению концепции.
+Гарантия прохождения формальной экспертизы (при соблюдении всех формальных требований заказчиком).</p>
+      Данные, которые предоставляет заказчик
+      <li>Описание проекта с научной новизной, прописанной по пунктам.</li>
+      <li>Резюме по направленной форме для каждого члена команды.</li>
+      <li>Подтверждающие документы (письма поддержки, грамоты/дипломы, документы по заявителю из ФНС, документы, подтверждающие возможность сбыта и др.).</li>
+    <p><b>Стоимость:</b> по договорённости </p>
+  </div>
+</div>
+</section>
+
+<script>
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Страница загружена - модальные окна готовы к работе');
+  
+  // Навигационное меню
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
+  
+  // Закрытие меню при клике на ссылку
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        if (hamburger) hamburger.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
+      }
+    });
+  });
+
+  // Форма обратной связи
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+      contactForm.reset();
+    });
+  }
+
+  // Инициализация новостей
+  const news = [
+    {
+      link: "https://vk.com/wall-230017404_169"
+    },
+    {
+      link: "https://vk.com/wall-230017404_166"
+    },
+    {
+      link: "https://vk.com/wall-230017404_168"
+    },
+  ];
+
+  const container = document.getElementById('news_cards');
+  
+  if (container) {
+    news.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'news-card';
+
+      const text = document.createElement('p');
+      text.textContent = item.text;
+      card.appendChild(text);
+
+      const link = document.createElement('a');
+      link.href = item.link;
+      link.target = '_blank';
+      link.textContent = 'Читать полностью';
+      card.appendChild(link);
+
+      container.appendChild(card);
+    });
+  }
+
+  // Тестирование модальных окон
+  console.log('Найдены модальные окна:', document.querySelectorAll('.modal').length);
+});
+
+// Кнопка "Наверх"
+let topBtn = document.getElementById("topBtn");
+window.onscroll = function() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    if (topBtn) topBtn.style.display = "block";
+  } else {
+    if (topBtn) topBtn.style.display = "none";
+  }
+};
+
+function topFunction() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+// ПРОСТЫЕ И РАБОЧИЕ ФУНКЦИИ ДЛЯ МОДАЛЬНЫХ ОКОН
+function openModal(id) {
+  console.log('Попытка открыть модальное окно:', id);
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'flex';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    console.log('Модальное окно открыто:', id);
+  } else {
+    console.log('Модальное окно не найдено:', id);
+  }
+}
+
+function closeModal(id) {
+  console.log('Закрытие модального окна:', id);
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+    modal.classList.remove('open');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// Закрытие по клику на фон
+document.addEventListener('click', function(event) {
+  if (event.target.classList.contains('modal')) {
+    closeModal(event.target.id);
+  }
+});
+
+// Закрытие по ESC
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    const openModals = document.querySelectorAll('.modal.open');
+    openModals.forEach(modal => {
+      closeModal(modal.id);
+    });
+  }
+});
+
+// Закрытие по клику на кнопку закрытия (дополнительная защита)
+document.querySelectorAll('.modal-close').forEach(button => {
+  button.addEventListener('click', function() {
+    const modal = this.closest('.modal');
+    if (modal) {
+      closeModal(modal.id);
+    }
+  });
+});
+</script>
+</body>
+</html>

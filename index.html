@@ -39,9 +39,9 @@ body {
 
 /* Логотип */
 .header-logo {
-  position: absolute;
-  bottom: -27px;
-  left: 50px;
+  position: absolute !important;
+  bottom: -27px !important;
+  left: 50px !important;
   width: 200px;
   height: auto;
   z-index: 10;
@@ -99,11 +99,12 @@ body {
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
-  z-index: 4;
+  z-index: 1000;
   background: #001f4d;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
 }
 
 .hamburger span {
@@ -486,15 +487,15 @@ footer {
   align-items: center;
   margin: 0 auto;
   text-align: center;
-  padding: 0;
+  padding: 0 15px;
   overflow: hidden;
 }
 
 #vk_groups {
-  width: 700px !important;
+  width: 100% !important;
   margin: 0 auto !important;
   display: block !important;
-  max-width: 100%;
+  max-width: 700px;
 }
 
 #vk_groups .post_inner:nth-child(-n+3) {
@@ -589,8 +590,8 @@ footer {
   
   .header-logo {
     position: absolute;
-    left: 20px;
-    bottom: -20px;
+    left: 20px !important;
+    bottom: -20px !important;
     width: 120px;
     margin-bottom: 10px;
   }
@@ -603,7 +604,72 @@ footer {
   .header p {
     font-size: 14px;
   }
+  @media (max-width: 768px) {
+  .nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    bottom: auto;
+  }
   
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 70px; /* Отступ от верхнего края */
+    right: 20px;
+    width: auto;
+    min-width: 200px;
+    max-width: 300px;
+    background: rgba(0, 31, 77, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+    transform: none;
+  }
+  
+  .nav-menu.mobile-active {
+    display: flex;
+    animation: slideDown 0.3s ease;
+  }
+  
+  .nav-link {
+    padding: 12px 20px;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px;
+    white-space: normal;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  .nav-link:hover {
+    background: rgba(77, 171, 247, 0.3);
+    transform: translateY(-1px);
+  }
+  /* Анимация появления */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
   /* Адаптивное меню для планшетов */
   .nav {
     position: static;
@@ -658,6 +724,46 @@ footer {
 
 /* Телефоны (до 576px) */
 @media (max-width: 576px) {
+  .nav {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .nav-menu {
+    top: 65px;
+    right: 15px;
+    min-width: 180px;
+    max-width: 250px;
+  }
+  
+  .nav-link {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .hamburger {
+    padding: 10px;
+  }
+  
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+  }
+}
+
+/* Анимация бургер-иконки */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+@media (max-width: 576px) {
   .header {
     height: 90px;
     padding-left: 120px;
@@ -676,56 +782,20 @@ footer {
   .header p {
     font-size: 12px;
   }
-  
-  /* Бургер-меню для мобильных */
-  .nav {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    bottom: auto;
+  @media (max-width: 576px) {
+  .vk-wrapper {
+    transform: scale(0.85);
+    transform-origin: top center;
+    height: 350px; /* Фиксированная высота */
+    overflow: hidden;
   }
   
-  .nav-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,31,77,0.95);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  #vk_groups {
+    transform: scale(1.18); /* Компенсируем масштаб контейнера */
+    transform-origin: top center;
   }
-  
-  .nav-menu.active {
-    display: flex;
-  }
-  
-  .hamburger {
-    display: flex;
-  }
-  
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-  
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-  
-  .nav-link {
-    font-size: 18px;
-    padding: 15px 30px;
-    width: 200px;
-    text-align: center;
-  }
-  
+}
+
   section {
     padding: 30px 10px;
   }
@@ -913,7 +983,7 @@ footer {
 
 <!-- Шапка сайта -->
 <header class="header">
-  <img src="https://sun9-39.userapi.com/s/v1/ig2/_22sINYEFhwAUal64EGuHPdzX7lhMSDv9iFP3K_KglmU062Gn7r63EqosWiHuowC708ybp6kIAy1Qg5Cf1Tuf3xS.jpg?quality=95&as=32x32,48x47,72x71,108x106,160x158,240x236,360x354,480x473,540x532,640x630,720x709,1080x1063,1178x1160&from=bu&cs=1178x0" alt="Логотип" class="header-logo">
+  <img src="https://sun9-22.userapi.com/s/v1/ig2/wJwY82M1CySPT_jPwbianRqxWCpYbLqTB24PxhAu3GjKSOOADimqwo2tCWjfI_BkkS1b-L1Kvz1vvbtzpS_yu5IJ.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x168,171x180&from=bu&cs=171x0" alt="Логотип" class="header-logo">
      <nav class="nav">
             <div class="hamburger">
                 <span></span>

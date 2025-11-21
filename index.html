@@ -40,6 +40,7 @@ body {
 /* Логотип */
 .header-logo {
   position: absolute !important;
+  bottom: -15px ;
   left: 20px !important;
   width: 200px;
   height: auto;
@@ -500,6 +501,10 @@ footer {
   display: flex;
 }
 
+#vk_groups .post_inner:hover {
+  transform: translateY(-3px);
+}
+
 .post-card {
   background: #fff;
   border-radius: 12px;
@@ -526,6 +531,7 @@ footer {
   border-radius: 10px;
   margin-top: 10px;
 }
+
 /* Шапка - ДЕСКТОП */
 .header {
   position: relative;
@@ -621,7 +627,6 @@ section {
   padding: 0 15px;
 }
 
-/* VK виджет для десктопа */
 @media (min-width: 1025px) {
   .vk-wrapper {
     padding: 0 20px !important;
@@ -632,58 +637,6 @@ section {
     margin: 0 auto !important;
   }
 }
-
-/* VK виджет для планшетов */
-@media (max-width: 1024px) {
-  #vk_groups {
-    width: 600px !important;
-  }
-}
-
-/* VK виджет для мобильных */
-@media (max-width: 768px) {
-  #vk_groups {
-    width: 500px !important;
-  }
-}
-
-/* VK виджет для маленьких телефонов */
-@media (max-width: 576px) {
-  .vk-wrapper {
-    padding: 0;
-    overflow-x: hidden !important;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  } 
-  
-  #vk_groups {
-    width: 80% !important;
-    max-width: 80% !important;
-    margin: 0 auto !important; /* Добавлено auto для центрирования */
-    transform: scale(0.8);
-    transform-origin: center center !important; /* Исправлено на center center */
-  }
-  
-  /* Принудительно исправляем внутренние элементы VK */
-  #vk_groups * {
-    max-width: none !important;
-    box-sizing: border-box !important;
-  }
-  
-  #vk_groups .wall_post_text {
-    white-space: normal !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-  }
-  
-  #vk_groups .pi_text {
-    white-space: normal !important;
-    word-wrap: break-word !important;
-  }
-}
-
 /* ========== АДАПТИВНОСТЬ ========== */
 
 /* ПЛАНШЕТЫ (769px - 1024px) */
@@ -710,6 +663,19 @@ section {
     right: 20px;
     bottom: 70px;
   }
+
+  @media (max-width: 1024px) {
+  #vk_groups {
+    width: 600px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #vk_groups {
+    width: 500px !important;
+  }
+}
+
 }
 
 /* БОЛЬШИЕ ТЕЛЕФОНЫ и МАЛЕНЬКИЕ ПЛАНШЕТЫ (577px - 768px) */
@@ -742,6 +708,41 @@ section {
     grid-template-columns: 1fr;
     max-width: 500px;
   }
+
+  @media (max-width: 576px) {
+  .vk-wrapper {
+    padding: 0 ;
+    overflow-x: hidden !important; /* Добавляем горизонтальную прокрутку если нужно */
+    width: 100%;
+    margin: 0 ;
+    display: flex;
+    justify-content: center;
+  } 
+  #vk_groups {
+    width: 80% !important;
+    max-width: 80% !important;
+    margin: 0 ;
+    transform: scale(0.8); /* Немного уменьшаем весь виджет */
+    transform-origin: center top;
+  }
+  
+  /* Принудительно исправляем внутренние элементы VK */
+  #vk_groups * {
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+  
+  #vk_groups .wall_post_text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  #vk_groups .pi_text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+}
   
   /* Навигация для планшетов */
   .nav {
@@ -762,20 +763,18 @@ section {
   .hamburger {
     display: none; /* Все еще скрыт на планшетах */
   }
-  
-  /* VK виджет для планшетов */
   .vk-wrapper {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
+    width: 100vw !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0  !important;
     overflow: hidden !important;
   }
   
   #vk_groups {
     width: 100% !important;
     max-width: none !important;
-    margin: 0 auto !important; /* Добавлено auto для центрирования */
+    margin: 0 !important;
     padding: 0 !important;
   }
   
@@ -784,7 +783,7 @@ section {
   #vk_groups iframe {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 auto !important; /* Добавлено auto для центрирования */
+    margin: 0;
     padding: 0 10px;
     box-sizing: border-box;
     position: relative;
@@ -792,17 +791,18 @@ section {
   }
 }
 
-/* Анимация для мобильного меню */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.95);
+
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
 /* ТЕЛЕФОНЫ (до 576px) */
   #vk_groups {
     width: 100% !important;
@@ -1509,7 +1509,7 @@ document.querySelectorAll('.modal-close').forEach(button => {
     document.getElementById('vk_groups').innerHTML = '';
 
     // Создаём новый виджет
-    VK.Widgets.Group("vk_groups", {mode: 2, width: "400", height: "500", no_cover: 1}, GROUP_ID);
+    VK.Widgets.Group("vk_groups", {mode: 2, width: "450", height: "500", no_cover: 1}, GROUP_ID);
 
     // Через 2.5 секунды стилизуем первые 3 поста
     setTimeout(() => {

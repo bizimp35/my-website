@@ -686,7 +686,7 @@ section {
   
   .header-logo {
     position: absolute;
-    left: 30px;
+    left: 20px;
     bottom: 0px;
     width: 160px;
   }
@@ -711,15 +711,16 @@ section {
     padding: 0 ;
     overflow-x: hidden !important; /* Добавляем горизонтальную прокрутку если нужно */
     width: 100%;
-    text-align: center;
+    margin: 0 ;
+    display: flex;
+    justify-content: center;
   } 
-
   #vk_groups {
     width: 80% !important;
     max-width: 80% !important;
-    transform: scale(0.8) !important; /* Немного уменьшаем весь виджет */
-    margin: 0 auto;
-    display: inline-block;
+    margin: 0 ;
+    transform: scale(0.8); /* Немного уменьшаем весь виджет */
+    transform-origin: center top;
   }
   
   /* Принудительно исправляем внутренние элементы VK */
@@ -781,8 +782,13 @@ section {
     max-width: 100% !important;
     margin: 0;
     padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
   }
 }
+
+
 
   @keyframes slideDown {
     from {

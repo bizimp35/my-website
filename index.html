@@ -691,7 +691,7 @@ section {
     position: absolute;
     left: 20px;
     bottom: 0px;
-    width: 160px;
+    width: 120px;
   }
   
   .header h1 {
@@ -717,13 +717,20 @@ section {
     margin: 0 ;
     display: flex;
     justify-content: center;
-  } 
+    position: relative;
+    left: 0;
+    transform: none;
+  }
+  
   #vk_groups {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 ;
-    transform: scale(0.8); /* Немного уменьшаем весь виджет */
+    transform: scale(0.85); /* Немного уменьшаем весь виджет */
     transform-origin: center top;
+    display: block;
+    padding: 0 10px;
+    left: 0 !important;
   }
   
   /* Принудительно исправляем внутренние элементы VK */
@@ -792,71 +799,54 @@ section {
 }
 
 
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
 /* ТЕЛЕФОНЫ (до 576px) */
-  #vk_groups {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    transform: scale(0.95) !important;
-    transform-origin: center top !important;
-  }
-
+@media (max-width: 576px) {
   .header {
     height: 100px;
-    justify-content: center;
-    padding-left: 0;
-    text-align: center;
-    position: relative;
+    justify-content: flex-start;
+    padding-left: 110px;
+    text-align: left;
   }
-
+  
   .header-logo {
-    position: absolute;
-    left: 50% !important;
+    left: 15px;
     bottom: -15px;
     width: 90px;
-    transform: translateX(-50%) !important;
   }
-
+  
   .header h1 {
     font-size: 18px;
-    text-align: center;
+    text-align: left;
   }
-
+  
   .header p {
     font-size: 12px;
-    text-align: center;
+    text-align: left;
   }
-
+  
   .services-container {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-
-  /* Бургер-меню */
+  #vk_groups {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        transform: scale(0.95) !important;
+        transform-origin: center top !important;
+  }
+  /* Бургер-меню для телефонов */
   .nav {
     position: fixed;
     top: 15px;
     right: 15px;
     bottom: auto;
   }
-
+  
   .nav-menu {
     display: none;
   }
-
+  
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -868,7 +858,7 @@ section {
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.2);
   }
-
+  
   .hamburger span {
     width: 22px;
     height: 2.5px;
@@ -876,7 +866,7 @@ section {
     transition: 0.3s;
     border-radius: 2px;
   }
-
+  
   .nav-menu.mobile-active {
     display: flex;
     position: fixed;
@@ -897,7 +887,28 @@ section {
     z-index: 999;
     animation: slideDown 0.3s ease;
   }
-
+  
+  .nav-link {
+    padding: 10px 14px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
 
 /* Анимация бургер-иконки */
 .hamburger.active span:nth-child(1) {

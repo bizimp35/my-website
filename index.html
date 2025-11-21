@@ -690,8 +690,8 @@ section {
   .header-logo {
     position: absolute;
     left: 20px;
-    bottom: -10px;
-    width: 120px;
+    bottom: 0px;
+    width: 160px;
   }
   
   .header h1 {
@@ -712,21 +712,25 @@ section {
   @media (max-width: 576px) {
   .vk-wrapper {
     padding: 0 ;
-    overflow-x: auto !important; /* Добавляем горизонтальную прокрутку если нужно */
+    overflow-x: hidden !important; /* Добавляем горизонтальную прокрутку если нужно */
     width: 100%;
-    margin: 0 auto;
+    margin: 0 ;
     display: flex;
     justify-content: center;
-    align-items: center;
+    position: relative;
+    left: 0;
+    transform: none;
   }
   
   #vk_groups {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 auto;
-    transform: scale(0.8); /* Немного уменьшаем весь виджет */
+    margin: 0 ;
+    transform: scale(0.85); /* Немного уменьшаем весь виджет */
     transform-origin: center top;
     display: block;
+    padding: 0 10px;
+    left: 0 !important;
   }
   
   /* Принудительно исправляем внутренние элементы VK */
@@ -785,8 +789,12 @@ section {
   #vk_groups > div,
   #vk_groups iframe {
     width: 100% !important;
-    max-width: 450px !important;
-    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
   }
 }
 

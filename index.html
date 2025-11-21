@@ -1491,7 +1491,7 @@ document.querySelectorAll('.modal-close').forEach(button => {
 });
 // Новости
 </script>
-<script src="script.js"></script>
+
 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
 <script type="text/javascript">
   const GROUP_ID = 230017404; // Замените на ID вашей группы
@@ -1580,34 +1580,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(checkElements, 1000);
 });
 
-// Функция для определения ширины виджета в зависимости от экрана
-function getVKWidgetWidth() {
-    const screenWidth = window.innerWidth;
-    
-    if (screenWidth >= 1024) {
-        return "700";
-    } else if (screenWidth >= 768) {
-        return "600";
-    } else if (screenWidth >= 576) {
-        return "500";
-    } else {
-        return Math.min(400, screenWidth - 40) + ""; // 400px или меньше с отступами
-    }
-}
 
-// Переинициализация при изменении размера окна
-window.addEventListener('resize', function() {
-    const vkWidget = document.getElementById('vk_groups');
-    if (vkWidget && vkWidget.innerHTML) {
-        vkWidget.innerHTML = ''; // Очищаем виджет
-        setTimeout(initVKWidget, 500); // Пересоздаем с новой шириной
-    }
-});
-
-// Запускаем при загрузке
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(initVKWidget, 1000);
-});
 </script>
 </body>
 </html>

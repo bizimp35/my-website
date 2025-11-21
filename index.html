@@ -719,8 +719,8 @@ section {
     justify-content: center;
   } 
   #vk_groups {
-    width: 80% !important;
-    max-width: 80% !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin: 0 ;
     transform: scale(0.8); /* Немного уменьшаем весь виджет */
     transform-origin: center top;
@@ -814,7 +814,69 @@ section {
     transform-origin: center top !important;
   }
 
+  .header {
+    height: 100px;
+    justify-content: center;
+    padding-left: 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-logo {
+    position: absolute;
+    left: 50% !important;
+    bottom: -15px;
+    width: 90px;
+    transform: translateX(-50%) !important;
+  }
+
+  .header h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .header p {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
   /* Бургер-меню */
+  .nav {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    bottom: auto;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    z-index: 1000;
+    background: #001f4d;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+    background: #fff;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+
   .nav-menu.mobile-active {
     display: flex;
     position: fixed;

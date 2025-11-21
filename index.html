@@ -648,7 +648,6 @@ section {
   .header-logo {
     width: 160px;
     left: 30px;
-    bottom: -20px;
   }
   
   .header h1 {
@@ -717,20 +716,14 @@ section {
     margin: 0 ;
     display: flex;
     justify-content: center;
-    position: relative;
-    left: 0;
-    transform: none;
+    
   }
   
   #vk_groups {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 ;
-    transform: scale(0.85); /* Немного уменьшаем весь виджет */
-    transform-origin: center top;
-    display: block;
-    padding: 0 10px;
-    left: 0 !important;
+    transform: scale(0.8); /* Немного уменьшаем весь виджет */
   }
   
   /* Принудительно исправляем внутренние элементы VK */
@@ -1582,7 +1575,7 @@ document.querySelectorAll('.modal-close').forEach(button => {
     document.getElementById('vk_groups').innerHTML = '';
 
     // Создаём новый виджет
-    VK.Widgets.Group("vk_groups", {mode: 2, width: "450", height: "500", no_cover: 1}, GROUP_ID);
+    VK.Widgets.Group("vk_groups", {mode: 2, width: "400", height: "500", no_cover: 1}, GROUP_ID);
 
     // Через 2.5 секунды стилизуем первые 3 поста
     setTimeout(() => {

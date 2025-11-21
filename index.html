@@ -708,22 +708,18 @@ section {
 
   @media (max-width: 576px) {
   .vk-wrapper {
-    padding: 0;
-    overflow-x: hidden !important;
+    padding: 0 ;
+    overflow-x: hidden !important; /* Добавляем горизонтальную прокрутку если нужно */
     width: 100%;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 auto !important;
+    text-align: center;
   } 
 
   #vk_groups {
-    width: 125% !important; /* Компенсируем scale(0.8) */
-    max-width: 125% !important;
-    transform: scale(0.8) !important; /* Убираем translateX(-20px) */
-    transform-origin: center center !important;
-    margin: 0 auto !important;
-    display: block !important;
+    width: 80% !important;
+    max-width: 80% !important;
+    transform: scale(0.8) !important; /* Немного уменьшаем весь виджет */
+    margin: 0 auto;
+    display: inline-block;
   }
   
   /* Принудительно исправляем внутренние элементы VK */

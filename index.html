@@ -44,6 +44,7 @@ body {
   left: 50px;
   width: 200px;
   height: auto;
+  z-index: 10;
 }
 
 .header h1 {
@@ -486,12 +487,14 @@ footer {
   margin: 0 auto;
   text-align: center;
   padding: 0;
+  overflow: hidden;
 }
 
 #vk_groups {
   width: 700px !important;
   margin: 0 auto !important;
   display: block !important;
+  max-width: 100%;
 }
 
 #vk_groups .post_inner:nth-child(-n+3) {
@@ -585,9 +588,9 @@ footer {
   }
   
   .header-logo {
-    position: relative;
-    left: auto;
-    bottom: auto;
+    position: absolute;
+    left: 20px;
+    bottom: -20px;
     width: 120px;
     margin-bottom: 10px;
   }
@@ -656,16 +659,18 @@ footer {
 /* Телефоны (до 576px) */
 @media (max-width: 576px) {
   .header {
-    height: 100px;
-    padding: 10px;
+    height: 90px;
+    padding-left: 120px;
   }
   
   .header-logo {
     width: 100px;
+    left: 15px;
+    bottom: -15px;
   }
   
   .header h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .header p {
@@ -827,10 +832,13 @@ footer {
 @media (max-width: 360px) {
   .header {
     height: 90px;
+    padding-left: 100px;
   }
   
   .header-logo {
     width: 80px;
+    left: 10px;
+    bottom: -12px;
   }
   
   .header h1 {
@@ -1608,7 +1616,34 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(checkElements, 1000);
 });
 
+// Функция для определения ширины виджета в зависимости от экрана
+function getVKWidgetWidth() {
+    const screenWidth = window.innerWidth;
+    
+    if (screenWidth >= 1024) {
+        return "700";
+    } else if (screenWidth >= 768) {
+        return "600";
+    } else if (screenWidth >= 576) {
+        return "500";
+    } else {
+        return Math.min(400, screenWidth - 40) + ""; // 400px или меньше с отступами
+    }
+}
 
+// Переинициализация при изменении размера окна
+window.addEventListener('resize', function() {
+    const vkWidget = document.getElementById('vk_groups');
+    if (vkWidget && vkWidget.innerHTML) {
+        vkWidget.innerHTML = ''; // Очищаем виджет
+        setTimeout(initVKWidget, 500); // Пересоздаем с новой шириной
+    }
+});
+
+// Запускаем при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initVKWidget, 1000);
+});
 </script>
 </body>
 </html>

@@ -40,7 +40,7 @@ body {
 /* Логотип */
 .header-logo {
   position: absolute !important;
-  bottom: -15px !important;
+  bottom: -9px !important;
   left: 20px !important;
   width: 200px;
   height: auto;
@@ -488,14 +488,15 @@ footer {
   margin: 0 auto;
   text-align: center;
   padding: 0 15px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #vk_groups {
-  width: 100% !important;
+  width: 700px !important;
   margin: 0 auto !important;
   display: block !important;
-  max-width: 700px;
+  max-width: 100%;
+  overflow: visible;
 }
 
 #vk_groups .post_inner:nth-child(-n+3) {
@@ -654,6 +655,19 @@ section {
     right: 20px;
     bottom: 70px;
   }
+
+  @media (max-width: 1024px) {
+  #vk_groups {
+    width: 600px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #vk_groups {
+    width: 500px !important;
+  }
+}
+
 }
 
 /* БОЛЬШИЕ ТЕЛЕФОНЫ и МАЛЕНЬКИЕ ПЛАНШЕТЫ (577px - 768px) */
@@ -686,6 +700,40 @@ section {
     grid-template-columns: 1fr;
     max-width: 500px;
   }
+  
+  @media (max-width: 576px) {
+  .vk-wrapper {
+    padding: 0 5px;
+    overflow-x: auto !important; /* Добавляем горизонтальную прокрутку если нужно */
+    width: 100vw;
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  
+  #vk_groups {
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: scale(0.9); /* Немного уменьшаем весь виджет */
+    transform-origin: center top;
+  }
+  
+  /* Принудительно исправляем внутренние элементы VK */
+  #vk_groups * {
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+  
+  #vk_groups .wall_post_text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  #vk_groups .pi_text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+}
   
   /* Навигация для планшетов */
   .nav {

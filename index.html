@@ -711,16 +711,20 @@ section {
     padding: 0;
     overflow-x: hidden !important;
     width: 100%;
-    text-align: center !important;
-} 
-
-#vk_groups {
-    width: 80% !important;
-    max-width: 80% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     margin: 0 auto !important;
-    transform: none !important;
-    display: inline-block !important;
-}
+  } 
+
+  #vk_groups {
+    width: 125% !important; /* Компенсируем scale(0.8) */
+    max-width: 125% !important;
+    transform: scale(0.8) !important; /* Убираем translateX(-20px) */
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
   
   /* Принудительно исправляем внутренние элементы VK */
   #vk_groups * {

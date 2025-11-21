@@ -25,7 +25,7 @@ body {
   position: relative;
   width: 100%;
   height: 150px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgb(255, 255, 255);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -40,7 +40,7 @@ body {
 /* Логотип */
 .header-logo {
   position: absolute !important;
-  bottom: -9px !important;
+  bottom: 0px ;
   left: 20px !important;
   width: 200px;
   height: auto;
@@ -492,7 +492,7 @@ footer {
 }
 
 #vk_groups {
-  width: 700px !important;
+  width: 400px !important;
   margin: 0 auto !important;
   display: block !important;
   max-width: 100%;
@@ -700,7 +700,7 @@ section {
     grid-template-columns: 1fr;
     max-width: 500px;
   }
-  
+
   @media (max-width: 576px) {
   .vk-wrapper {
     padding: 0 5px;
@@ -1562,7 +1562,7 @@ document.querySelectorAll('.modal-close').forEach(button => {
     document.getElementById('vk_groups').innerHTML = '';
 
     // Создаём новый виджет
-    VK.Widgets.Group("vk_groups", {mode: 2, width: "450", height: "500", no_cover: 1}, GROUP_ID);
+    VK.Widgets.Group("vk_groups", {mode: 2, width: "400", height: "500", no_cover: 1}, GROUP_ID);
 
     // Через 2.5 секунды стилизуем первые 3 поста
     setTimeout(() => {

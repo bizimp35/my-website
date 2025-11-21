@@ -19,64 +19,46 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+/* Шапка */
+  .header {
+    position: relative;
+    width: 100%;
+    height: 150px; /* Можно менять высоту */
+    background: rgba(255, 255, 255, 0.7); /* легкий фон для контраста */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    overflow: hidden;
+  }
 
-/* Панель навигации */
-.navbar {
-  background: #001f4d;
-  padding: 0;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  min-height: 80px;
-  overflow: visible;
-}
+  /* Логотип */
+  .header-logo {
+    position: absolute;
+    bottom: -27px;
+    left: 50px; /* Отступ слева */
+    width: 220px; /* Размер логотипа */
+    height: auto;
+  }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  height: 80px;
-  position: relative;
-}
+  .header h1 {
+    margin: 0;
+    font-size: 40px;
+  }
 
-/* Логотип */
-.nav-logo {
-  width: 200px;
-  height: 60px;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.95);
-  padding: 5px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  flex-shrink: 0;
-}
-
-.nav-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: left center;
-  transition: all 0.3s ease;
-  filter: brightness(1.1) contrast(1.1);
-}
-
-.nav-logo img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.2) contrast(1.2);
-}
+  .header p {
+    margin: 5px 0 0;
+    font-size: 18px;
+  }
 
 /* Меню */
 .nav-menu {
   display: flex;
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -87,12 +69,12 @@ body {
 .nav-link {
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px 20px;
   position: relative;
   transition: all 0.3s ease;
   font-size: 16px;
-  background: linear-gradient(135deg, rgba(0,31,77,0.9) 0%, rgba(0,51,102,0.9) 100%);
+  background: linear-gradient(135deg, #001f4d 0%, #001f4d 100%);
   border-radius: 25px;
   border: 1px solid rgba(77, 171, 247, 0.3);
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -103,6 +85,22 @@ body {
   background: linear-gradient(135deg, rgba(77, 171, 247, 0.9) 0%, rgba(0, 123, 255, 0.9) 100%);
   transform: translateY(-2px);
 }
+/* Обновлённая навигация */
+.nav {
+  position: absolute;
+  right: 30px;     /* расстояние от правого края картинки */
+  bottom: 90px;    /* расстояние от нижнего края */
+  z-index: 5;      /* поверх всего */
+}
+
+.nav-menu {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 
 /* Бургер-меню */
 .hamburger {
@@ -111,7 +109,7 @@ body {
   cursor: pointer;
   gap: 4px;
   z-index: 4;
-  background: rgba(0,31,77,0.9);
+  background: #001f4d;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
@@ -143,8 +141,8 @@ h2 {
 /* Стили для трех карточек "О нас" */
 .about-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
   margin-top: 30px;
 }
 
@@ -157,7 +155,6 @@ h2 {
   flex-direction: column;
   transition: all 0.3s ease;
   height: auto;
-  min-height: 420px;
   text-align: center;
   border: 2px solid transparent;
 }
@@ -179,7 +176,7 @@ h2 {
 
 .card-top img {
   width: 240px;
-  height: 300px;
+  height: 280px;
   border-radius: 10%;
   object-fit: cover;
   margin: 0 auto 15px;
@@ -199,9 +196,9 @@ h2 {
 .card-desc {
   font-size: 16px;
   color: #666;
-  margin: 0 0 15px 0;
+  margin: 0 auto;
   line-height: 1.4;
-  font-weight: 500;
+  max-width: 90%;
 }
 
 .about-card ul {
@@ -233,8 +230,20 @@ h2 {
   font-size: 18px;
   margin-right: 8px;
 }
-
-/* Карточки услуг - ОСНОВНЫЕ ИЗМЕНЕНИЯ */
+/*надпись над услугами*/
+.services-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: #001f4d;
+    margin-top: -5px;
+    margin-bottom: 25px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.45;
+}
+/* Карточки услуг -  */
 .services-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -308,63 +317,14 @@ h2 {
   background: #003366;
   transform: translateY(-2px);
 }
-
-/* Форма обратной связи */
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  width: 100%;
-}
-
-form input, form textarea {
-  margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1em;
-  width: 100%;
-}
-
-form input:focus, form textarea:focus {
-  border-color: #001f4d;
-  outline: none;
-  box-shadow: 0 0 8px rgba(0,31,77,0.3);
-}
-
-form button {
-  background: #001f4d;
-  color: #fff;
-  border: none;
-  padding: 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: 0.3s;
-  width: 100%;
-}
-
-form button:hover {
-  background: #003366;
-}
-
 /* Подвал */
 footer {
   background: #001f4d;
   color: #fff;
   text-align: center;
-  padding: 30px 15px;
+  padding: 20px 15px;
   width: 100%;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  
 }
 
 /* Кнопка наверх */
@@ -471,48 +431,118 @@ footer {
   font-size: 18px;
 }
 
-/* Новости */
-#news_cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
+/*Контакты*/
+    .contacts h3 {
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: #001f4d;
+       
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.news-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s;
-  height: auto;
-  min-height: 70px;
-}
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 18px 0;
+        font-size: 16px;
+        transition: transform 0.3s ease;
+    }
 
-.news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
+    .contact-item svg {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+        fill: #00acee;
+        transition: transform 0.3s ease, fill 0.3s ease;
+    }
 
-.news-card p {
-  margin: 0 0 10px ;
-}
+    .contact-item a {
+        color: #848484;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        
+    }
 
-.news-card a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #2B587A;
-  margin-top: auto;
-}
+    .contact-item:hover svg {
+        transform: scale(1.3) rotate(10deg);
+        fill: #001f4d;
+    }
 
-.news-card a:hover {
-  color: #001f4d;
-}
+    .contact-item:hover a {
+        color: #001f4d;
+    }
+
+    .phone {
+        font-size: 18px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease, color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .phone:hover {
+        color: #848484;
+        transform: scale(1.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+/*Новости*/
+    .vk-wrapper {
+    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+  }
+
+    #vk_groups {
+    width: 700px !important; /* фикс ширина виджета */
+    margin: 0 auto !important; /* центрируем на всякий случай */
+    display: block !important;
+  }
+
+  #vk_groups .post_inner:nth-child(-n+3) {
+    display: flex;
+  }
+
+  #vk_groups .post_inner:hover {
+    transform: translateY(-3px);
+  }
+  .post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center; /* центрируем всё */
+  }
+
+  .post-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .vk-post-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .vk-post img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
 
 /* Адаптивность */
 @media (max-width: 1024px) {
@@ -691,9 +721,7 @@ footer {
     min-height: 200px;
   }
   
-  form {
-    padding: 15px;
-  }
+  
   
   #topBtn, .whatsapp {
     bottom: 15px;
@@ -718,23 +746,15 @@ footer {
 <body>
 
 <!-- Шапка сайта -->
-<header>
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <img src="https://sun9-49.userapi.com/s/v1/if2/iojfyuf2nMH0Yfyk1SwJ_KL_sS5PFLxnxhU2r7UDmYVT7-br1x-5sHo5ttA8zOuO0HinDCa--IMVzMQLAE3rUoD4.jpg?quality=95&as=32x10,48x15,72x22,108x33,160x49,240x74,360x111,480x148,540x167,640x198,720x223,1080x334,1280x396,1440x445,1566x484&from=bu&cs=1566x0" alt="Бизнес Импульс">
-      </div>
+<header class="header">
+  <img src="c:\Users\ALFA\Downloads\Telegram Desktop\logo_transparent_180px.png" alt="Логотип" class="header-logo">
+      
+   <nav class="nav">
       <ul class="nav-menu">
         <li><a href="#about" class="nav-link">О нас</a></li>
         <li><a href="#services" class="nav-link">Услуги</a></li>
         <li><a href="#contacts" class="nav-link">Контакты</a></li>
       </ul>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
   </nav>
 </header>
 
@@ -746,9 +766,9 @@ footer {
       <div class="card-top">
         <h3 class="name">Щербакова Анна</h3>
         <p class="card-desc">Кандидат экономических наук с техническим образованием, опыт в привлечении государственных инвестиций.</p>
-        <img src="https://sun9-49.userapi.com/s/v1/ig2/HpfunVQT4W6zGQBZR6zlkoazWEy3546ZN786bwKNHoWoJXft2-5EIsd5pwnu3uUeo79AnhuX8bvlatliyFzepbxv.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,768x1024&from=bu&cs=768x0" alt="Анна">
+        <img src="https://sun9-79.userapi.com/s/v1/ig2/deuhGaLK5eQjpvJTpA5dO_26KNV4FddmM4Ymk2Q_2uyBZj1VfX81R_nS9u9kIlA6RKaZT9uDY9lDQpQzoYPOY_gf.jpg?quality=95&as=32x44,48x66,72x99,108x148,160x219,240x329,360x493,480x658,540x740,640x877,720x987,864x1184&from=bu&cs=864x0" alt="Анна">
       </div>
-      <a href="files/Анна.pdf" class="btn btn-outline-primary" target="_blank">
+      <a href="Анна.pdf" class="btn btn-outline-primary" target="_blank">
       Подробнее...
     </a>
     </div>
@@ -760,7 +780,7 @@ footer {
         <p class="card-desc">Практикующий топ-менеджер с опытом работы более 20 лет в реальном секторе экономики.</p>
         <img src="https://psv4.userapi.com/s/v1/d2/iI0D3jf5kWcOL0PKLbbNC7JI9MJUrmSiamPHqoCX1Wl_YZuCKP_pUanWZ0j4g5ZZ7QrkWRZXwT-epY1wvKbOZFwk2TIA6L2Lh6NL5M4nHckwi75FVBMXzb7qJrfyBnOZe-UvqbW3V_pC/5467533955705208600.jpg" alt="Марина">
       </div>
-      <a href="files/Марина.pdf" class="btn btn-outline-primary" target="_blank">
+      <a href="Марина.pdf" class="btn btn-outline-primary" target="_blank">
       Подробнее...
     </a>
     </div>
@@ -770,7 +790,11 @@ footer {
 <!-- Секция услуг -->
 <section id="services">
   <h2>Наши услуги</h2>
+  <p class="services-subtitle">
+    Первую консультацию по возможностям привлечения инвестиций и повышения эффективности бизнеса проводим бесплатно!
+</p>
   <div class="services-container">
+    
       <!-- 1 -->
     <div class="card">
       <h3>Тренинг «Бизнес-модель для социального бизнеса»</h3>
@@ -892,30 +916,47 @@ footer {
     </div>
   </div> <!-- /container -->
 </section>
+<!-- Контакты-->
+<div class="contacts">
+    <h3>Контакты</h3>
+    
+    <p class="phone">📞 +7 (921) 054-76-09</p>
 
-<!-- Форма обратной связи -->
-<section id="feedback">
-  <h2>Связаться с нами</h2>
-  <form id="contactForm">
-    <input type="text" placeholder="Ваше имя" required>
-    <input type="email" placeholder="Ваш Email" required>
-    <textarea rows="5" placeholder="Ваше сообщение" required></textarea>
-    <button type="submit">Отправить</button>
-  </form>
-</section>
+    <p class="contact-item">
+        <!-- VK Icon -->
+        <svg viewBox="0 0 24 24">
+            <path d="M12 0C5.372 0 0 5.372 0 12c0 6.628 5.372 12 12 12s12-5.372 12-12C24 5.372 18.628 0 12 0zm4.215 16.855h-1.791c-.504 0-.659-.371-1.55-1.261-.786-.786-1.134-.874-1.326-.874-.277 0-.356.079-.356.482v1.146c0 .343-.109.553-1.019.553-1.505 0-3.171-.874-4.373-2.492-1.818-2.359-2.295-4.128-2.295-4.628 0-.197.079-.395.482-.395h1.791c.356 0 .504.172.644.592.659 1.909 1.775 3.579 2.365 3.579.277 0 .395-.079.395-.533v-1.649c-.059-.985-.591-1.073-.591-1.408 0-.172.138-.344.356-.344h2.783c.316 0 .434.138.434.454v2.438c0 .3.138.434.237.434.197 0 .356-.099.69-.434 1.075-1.192 1.857-3.026 1.857-3.026.119-.277.277-.395.553-.395h1.791c.434 0 .533.237.434.553-.237.949-2.529 4.319-2.529 4.319-.197.316-.277.454 0 .77.138.197.592.592.888 1.005.613.827 1.073 1.526 1.203 1.997.119.434-.079.652-.533.652z"/>
+</svg>
+        <a href="https://vk.com/busimpulse" target="_blank">Перейти в группу VK </a>
+    </p>
+
+    <p class="contact-item">
+        <!-- Telegram Icon -->
+        <svg viewBox="0 0 24 24">
+            <path d="M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm5.666 8.168l-1.823 8.599c-.139.625-.501.78-1.015.487l-2.804-2.067-1.351 1.301c-.15.15-.276.276-.566.276l.203-2.889 5.259-4.76c.229-.203-.05-.317-.355-.114l-6.495 4.086-2.794-.873c-.607-.19-.618-.607.127-.899l10.929-4.21c.505-.195.95.127.788.892z"/>
+        </svg>
+        <a href="https://t.me/+Xzlfg7XdVngwNTA6" target="_blank">Перейти в Telegram</a>
+    </p>
+    <p class="contact-item">
+    <!-- Email Icon -->
+    <svg viewBox="0 0 24 24">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+    </svg>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bizimp35@yandex.ru" target="_blank">
+        Написать на почту
+    </a>
+</p>
+</div>  
 
 <!-- Новости -->
 <section id="news-section">
   <h2>Наши новости</h2>
-  <div id="news_cards"></div>
+<div class="vk-wrapper">
+  <div id="vk_groups"></div>
+</div>
 </section>
-
 <!-- Подвал -->
-<footer id="contacts">
-  <div class="footer-content">
-    <h3>Контакты</h3>
-    <p><strong>Телефон:</strong> +7 (921) 054-76-09</p>
-    <p><strong>VK чат:</strong> <a href="https://vk.com/busimpulse" target="_blank" style="color:#f0f0f0; text-decoration:underline;">Перейти в чат</a></p>
+ <footer>
     <p style="margin-top:20px;">© 2025 Бизнес Импульс. Все права защищены.</p>
   </div>
 </footer>
@@ -1214,7 +1255,7 @@ footer {
 <script>
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Страница загружена - модальные окна готовы к работе');
+  console.log('Страница загружена - модальные окна готовы к работе')});
   
   // Навигационное меню
   const hamburger = document.querySelector('.hamburger');
@@ -1238,54 +1279,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Форма обратной связи
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
-      contactForm.reset();
-    });
-  }
-
-  // Инициализация новостей
-  const news = [
-    {
-      link: "https://vk.com/wall-230017404_169"
-    },
-    {
-      link: "https://vk.com/wall-230017404_166"
-    },
-    {
-      link: "https://vk.com/wall-230017404_168"
-    },
-  ];
-
-  const container = document.getElementById('news_cards');
-  
-  if (container) {
-    news.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'news-card';
-
-      const text = document.createElement('p');
-      text.textContent = item.text;
-      card.appendChild(text);
-
-      const link = document.createElement('a');
-      link.href = item.link;
-      link.target = '_blank';
-      link.textContent = 'Читать полностью';
-      card.appendChild(link);
-
-      container.appendChild(card);
-    });
-  }
-
-  // Тестирование модальных окон
-  console.log('Найдены модальные окна:', document.querySelectorAll('.modal').length);
-});
-
 // Кнопка "Наверх"
 let topBtn = document.getElementById("topBtn");
 window.onscroll = function() {
@@ -1301,7 +1294,7 @@ function topFunction() {
     top: 0,
     behavior: 'smooth'
   });
-}
+};
 // ПРОСТЫЕ И РАБОЧИЕ ФУНКЦИИ ДЛЯ МОДАЛЬНЫХ ОКОН
 function openModal(id) {
   console.log('Попытка открыть модальное окно:', id);
@@ -1314,7 +1307,7 @@ function openModal(id) {
   } else {
     console.log('Модальное окно не найдено:', id);
   }
-}
+};
 
 function closeModal(id) {
   console.log('Закрытие модального окна:', id);
@@ -1324,7 +1317,7 @@ function closeModal(id) {
     modal.classList.remove('open');
     document.body.style.overflow = 'auto';
   }
-}
+};
 
 // Закрытие по клику на фон
 document.addEventListener('click', function(event) {
@@ -1352,6 +1345,44 @@ document.querySelectorAll('.modal-close').forEach(button => {
     }
   });
 });
+// Новости
+</script>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+<script type="text/javascript">
+  const GROUP_ID = 230017404; // Замените на ID вашей группы
+
+  function loadVKPosts() {
+    // Сначала очищаем старый виджет
+    document.getElementById('vk_groups').innerHTML = '';
+
+    // Создаём новый виджет
+    VK.Widgets.Group("vk_groups", {mode: 2, width: "700", height: "500", no_cover: 1}, GROUP_ID);
+
+    // Через 2.5 секунды стилизуем первые 3 поста
+    setTimeout(() => {
+      const posts = document.querySelectorAll('#vk_groups .post_inner');
+      posts.forEach((post, index) => {
+        if(index < 3){
+          post.style.display = 'block';
+          const timestamp = post.querySelector('.post_date');
+          if(timestamp){
+            const dateDiv = document.createElement('div');
+            dateDiv.className = 'vk-post-date';
+            dateDiv.textContent = timestamp.textContent;
+            post.insertBefore(dateDiv, post.firstChild);
+          }
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    }, 2500);
+  }
+
+  // Первоначальная загрузка
+  loadVKPosts();
+
+  // Автообновление каждые 5 минут (300000 мс)
+  setInterval(loadVKPosts, 300000);
 </script>
 </body>
 </html>

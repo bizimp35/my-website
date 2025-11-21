@@ -484,9 +484,9 @@ footer {
   display: flex !important;
   justify-content: center !important;
   align-items: center;
-  margin: 0;
+  margin: 0 auto;
   text-align: center;
-  padding: 0;
+  padding: 0 15px;
   overflow: visible;
 }
 
@@ -495,7 +495,6 @@ footer {
   margin: 0 auto !important;
   display: block !important;
   max-width: 100%;
-  overflow: visible;
 }
 
 #vk_groups .post_inner:nth-child(-n+3) {
@@ -552,8 +551,8 @@ footer {
 
 .header-logo {
   position: absolute;
-  bottom: -27px;
-  left: 50px;
+  bottom: -20px;
+  left: 20px;
   width: 200px;
   height: auto;
   z-index: 10;
@@ -628,6 +627,16 @@ section {
   padding: 0 15px;
 }
 
+@media (min-width: 1025px) {
+  .vk-wrapper {
+    padding: 0 20px !important;
+  }
+  
+  #vk_groups {
+    width: 700px !important;
+    margin: 0 auto !important;
+  }
+}
 /* ========== АДАПТИВНОСТЬ ========== */
 
 /* ПЛАНШЕТЫ (769px - 1024px) */
@@ -681,7 +690,7 @@ section {
   .header-logo {
     position: absolute;
     left: 20px;
-    bottom: -20px;
+    bottom: -10px;
     width: 120px;
   }
   
@@ -704,16 +713,20 @@ section {
   .vk-wrapper {
     padding: 0 ;
     overflow-x: auto !important; /* Добавляем горизонтальную прокрутку если нужно */
-    width: 100vw;
-    margin-left: 0px;
-    margin-right: 0px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   #vk_groups {
     width: 100% !important;
     max-width: 100% !important;
+    margin: 0 auto;
     transform: scale(0.8); /* Немного уменьшаем весь виджет */
     transform-origin: center top;
+    display: block;
   }
   
   /* Принудительно исправляем внутренние элементы VK */
@@ -772,7 +785,7 @@ section {
   #vk_groups > div,
   #vk_groups iframe {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 450px !important;
     min-width: 100% !important;
   }
 }
@@ -808,7 +821,7 @@ section {
     gap: 15px;
   }
   #vk_groups {
-        width: 100vw !important;
+        width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
         transform: scale(0.95) !important;
@@ -1561,7 +1574,7 @@ document.querySelectorAll('.modal-close').forEach(button => {
     document.getElementById('vk_groups').innerHTML = '';
 
     // Создаём новый виджет
-    VK.Widgets.Group("vk_groups", {mode: 2, width: "400", height: "500", no_cover: 1}, GROUP_ID);
+    VK.Widgets.Group("vk_groups", {mode: 2, width: "450", height: "500", no_cover: 1}, GROUP_ID);
 
     // Через 2.5 секунды стилизуем первые 3 поста
     setTimeout(() => {

@@ -706,6 +706,94 @@ section {
     max-width: 500px;
   }
 
+  @media (max-width: 576px) {
+  .vk-wrapper {
+    padding: 0;
+    overflow-x: hidden !important;
+    width: 100%;
+    text-align: center !important;
+} 
+
+#vk_groups {
+    width: 80% !important;
+    max-width: 80% !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    display: inline-block !important;
+}
+  
+  /* Принудительно исправляем внутренние элементы VK */
+  #vk_groups * {
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+  
+  #vk_groups .wall_post_text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  #vk_groups .pi_text {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+}
+  
+  /* Навигация для планшетов */
+  .nav {
+    position: static;
+    margin-top: 10px;
+  }
+  
+  .nav-menu {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+  
+  .hamburger {
+    display: none; /* Все еще скрыт на планшетах */
+  }
+  .vk-wrapper {
+    width: 100vw !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 0  !important;
+    overflow: hidden !important;
+  }
+  
+  #vk_groups {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Принудительные стили для iframe */
+  #vk_groups > div,
+  #vk_groups iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0;
+    padding: 0 10px;
+  }
+}
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 /* ТЕЛЕФОНЫ (до 576px) */
   #vk_groups {
     width: 100% !important;
@@ -716,11 +804,7 @@ section {
     transform: scale(0.95) !important;
     transform-origin: center top !important;
   }
-.vk-wrapper {
-    padding: 0 ;
-    overflow-x: hidden !important; /* Добавляем горизонтальную прокрутку если нужно */
-    width: 100%;
-  } 
+
   /* Бургер-меню */
   .nav-menu.mobile-active {
     display: flex;
@@ -741,25 +825,6 @@ section {
     overflow-y: auto;
     z-index: 999;
     animation: slideDown 0.3s ease;
-  }
-  /* Принудительные стили для iframe */
-  #vk_groups > div,
-  #vk_groups iframe {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0;
-    padding: 0 10px;
-  }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
   }
 
 

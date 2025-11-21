@@ -40,8 +40,8 @@ body {
 /* Логотип */
 .header-logo {
   position: absolute !important;
-  bottom: -10px !important;
-  left: 30px !important;
+  bottom: -15px !important;
+  left: 20px !important;
   width: 200px;
   height: auto;
   z-index: 10;
@@ -533,22 +533,6 @@ footer {
   margin-top: 10px;
 }
 
-/* ========== АДАПТИВНОСТЬ ========== */
-/* Базовые стили для всех устройств */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body { 
-  font-family: Arial, sans-serif; 
-  background:#e6ecf3; 
-  color:#333;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
 /* Шапка - ДЕСКТОП */
 .header {
   position: relative;
@@ -722,7 +706,30 @@ section {
   .hamburger {
     display: none; /* Все еще скрыт на планшетах */
   }
+  .vk-wrapper {
+    width: 100vw !important;
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+    padding: 0 10px !important;
+    overflow: hidden !important;
+  }
+  
+  #vk_groups {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Принудительные стили для iframe */
+  #vk_groups > div,
+  #vk_groups iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+  }
 }
+
 
 /* ТЕЛЕФОНЫ (до 576px) */
 @media (max-width: 576px) {
@@ -753,7 +760,13 @@ section {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+  #vk_groups {
+        width: 100vw !important;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+        transform: scale(0.95) !important;
+        transform-origin: center top !important;
+  }
   /* Бургер-меню для телефонов */
   .nav {
     position: fixed;
@@ -847,7 +860,7 @@ section {
 
 <!-- Шапка сайта -->
 <header class="header">
-  <img src="https://sun9-22.userapi.com/s/v1/ig2/wJwY82M1CySPT_jPwbianRqxWCpYbLqTB24PxhAu3GjKSOOADimqwo2tCWjfI_BkkS1b-L1Kvz1vvbtzpS_yu5IJ.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x168,171x180&from=bu&cs=171x0" alt="Логотип" class="header-logo">
+  <img src="https://sun9-22.userapi.com/s/v1/ig2/DVPvYgKJK3jw7YUFyANnqvb0ntRYtKQGpapNqe5K7CsVnPbBjCKdu4aFW3KU9XkD6gRwlKnisIczIemIH2D-3tY9.jpg?quality=95&as=32x34,48x51,72x76,108x114,160x168,171x180&from=bu&cs=171x0" alt="Логотип" class="header-logo">
      <nav class="nav">
             <div class="hamburger">
                 <span></span>

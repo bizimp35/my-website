@@ -691,7 +691,9 @@ section {
     margin: 0 ;
     display: block;
     width: 120px;
-    top: -45px;
+    top: 0px;
+    left: 0;
+    height: auto;
   }
   
   .header h1 {
@@ -795,15 +797,22 @@ section {
 /* ТЕЛЕФОНЫ (до 576px) */
 @media (max-width: 576px) {
   .header {
-    height: 100px;
+    margin: 0;
+    padding: 0;
+    height: auto;
     justify-content: flex-start;
     padding-left: 110px;
     text-align: left;
+    
   }
   
   .header-logo {
     left: 15px;
-    width: 90px;
+    width: 140px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transform: none;
   }
   
   .header h1 {
@@ -931,34 +940,7 @@ section {
 #vk_groups > div {
     margin: 0 auto !important;
 }
-/* Специальный фикс логотипа для мобильной версии */
-@media (max-width: 768px ){
-    .header-logo {
-        position: relative !important;
-        top: -45px !important;
-        left: 0 !important;
 
-        display: block !important;
-        width: 130px !important;
-        height: auto !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        transform: none !important;
-    }
-
-    header,
-    .header {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-        height: auto !important;
-    }
-  }
 </style>
 </head>
 <body>

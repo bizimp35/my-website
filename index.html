@@ -40,7 +40,7 @@ body {
 /* Логотип */
 .header-logo {
   position: absolute !important;
-  bottom: -15px ;
+  top: -45px;
   left: 20px !important;
   width: 200px;
   height: auto;
@@ -914,6 +914,24 @@ section {
 .hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
+/* Контейнер блока "Наши новости" */
+#vk_widget_section {
+    display: flex;
+    justify-content: center;
+}
+
+/* Сам контейнер виджета */
+#vk_groups {
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* Внешний div, который создаёт VK */
+#vk_groups > div {
+    margin: 0 auto !important;
+}
+
 </style>
 </head>
 <body>
@@ -1128,7 +1146,7 @@ section {
 <!-- Новости -->
 <section id="news">
   <h2>Наши новости</h2>
-<div class="vk-wrapper">
+<div id="vk-widget_selection">
   <div id="vk_groups"></div>
 </div>
 </section>
